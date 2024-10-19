@@ -1,0 +1,131 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #fdfcfd 0%, #2575fc 100%);
+    color: #fff;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: rgba(252, 245, 245, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    animation: fadeInDown 0.5s ease forwards;
+}
+
+header p {
+    font-size: 1.2em;
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Domains Section */
+#domains {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#domains h2 {
+    margin-bottom: 40px;
+    font-size: 2em;
+}
+
+.domain-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.domain-card {
+    background: #dfa813;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 280px;
+    min-height: 200px; /* Ensure all cards have the same height */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background 0.3s;
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+.domain-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+}
+
+.domain-card p {
+    margin: 0 0 15px;
+}
+
+.domain-card button {
+    background-color: #edcd88;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.domain-card button:hover {
+    background-color: #f49005;
+    transform: scale(1.05);
+}
+
+/* Footer Styles */
+footer {
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .domain-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .domain-card {
+        width: 90%; /* Full width on smaller screens */
+    }
+}

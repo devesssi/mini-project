@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Training and Placement</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+    <style>
+        /* Define dark color palette */
+        :root {
+            --primary-color: #E9B170; /* Bright Green */
+            --secondary-color: #ffffff; /* White */
+            --background-start: #bdbec1; /* Dark Blue */
+            --background-end: #FFFFFF; /* Navy Blue */
+            --button-hover-color: #fbfcfe; /* Slightly darker green for hover */
+            --text-color: #dddddd; /* Light Gray Text */
+            --box-color: #1c1c1c; /* Dark background for container */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, var(--background-start), var(--background-end));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+            color: var(--text-color);
+        }
+
+        /* Gradient animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .login-container {
+            background-color: var(--box-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            box-sizing: border-box; /* Ensure padding does not affect width */
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative; /* Positioning context for eye icon */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            padding-right: 40px; /* Add padding to the right for the icon */
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #2d2d2d;
+            color: var(--text-color);
+            box-sizing: border-box; /* Ensure padding does not affect width */
+        }
+
+        /* Hide spinner in number input */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: var(--button-hover-color);
+        }
+
+        .role-label {
+            font-size: 18px;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #prn-field {
+            display: none;
+        }
+
+        /* Eye icon style */
+        .eye-icon {
+            position: absolute;
+            right: 10px; /* Adjust this value as needed */
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--text-color);
+            pointer-events: all; /* Ensure the icon is clickable */
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .login-container {
+                width: 90%;
+                padding: 20px;
+            }
+            .login-container h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <p class="role-label" id="roleLabel">Logging in as: <span id="roleText"></span></p>
+    <form action="loginServlet" method="POST">
+        <!-- PRN Field (only for Students) -->
+        <div class="form-group" id="prn-field">
+            <label for="prn">PRN No:</label>
+            <input type="number" id="prn" name="prn" required pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <span class="eye-icon" id="togglePassword"><i class="fa-regular fa-eye-slash"></i></span> <!-- Eye icon from Font Awesome -->
+        </div>
+        <div class="form-group">
+            <button type="submit" ><a href="home.html" style="text-decoration: none;">Login</a></button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Get the role from the URL query parameter
+    const params = new URLSearchParams(window.location.search);
+    const role = params.get('role');
+
+    // Display the selected role in the roleLabel
+    const roleText = document.getElementById('roleText');
+    const prnField = document.getElementById('prn-field');
+
+    if (role) {
+        // Capitalize the first letter and display it
+        roleText.textContent = role.charAt(0).toUpperCase() + role.slice(1);
+
+        // Show PRN field if the role is student
+        if (role === 'student') {
+            prnField.style.display = 'block';
+        }
+    } else {
+        // Default message if role is not defined
+        roleText.textContent = "Unknown Role";
+    }
+
+    // Toggle password visibility
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function() {
+        // Toggle the input type between 'password' and 'text'
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        // Toggle the eye icon
+        this.innerHTML = type === 'password' ? '<i class="fa-regular fa-eye-slash"></i>' : '<i class="fa-regular fa-eye"></i>'; // Change icon based on visibility
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Role - Training and Placement</title>
+    <style>
+        /* Define dark color palette */
+        :root {
+            --primary-color: #b26526; /* Bright Green */
+            --secondary-color: #ffffff; /* White */
+            --background-start: #d2d4d8; /* Dark Blue */
+            --background-end: #FFFFFF; /* Navy Blue */
+            --button-hover-color: #E5D0D4; /* Slightly darker green for hover */
+            --text-color: #dddddd; /* Light Gray Text */
+            --box-color: #1c1c1c; /* Dark background for container */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, var(--background-start), var(--background-end));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+            color: var(--text-color);
+        }
+
+        /* Gradient animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .role-container {
+            background-color: var(--box-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 350px; /* Set the width to 350px */
+            box-sizing: border-box; /* Ensure padding is included in the width */
+        }
+
+        .role-container h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: var(--primary-color);
+        }
+
+        .role-container button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 18px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .role-container button:hover {
+            background-color: var(--button-hover-color);
+        }
+
+        .role-container p {
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        /* Media Query for Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .role-container {
+                width: 350px; /* Maintain 350px width on smaller screens */
+                padding: 20px;
+            }
+            .role-container h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="role-container">
+    <h2>Select Your Role</h2>
+    <form action="login.html" method="GET">
+        <button type="submit" name="role" value="student">Student</button>
+        <button type="submit" name="role" value="faculty">H.R</button>
+        <button type="submit" name="role" value="admin">Admin</button>
+    </form>
+    <p>Please select your role to proceed to the login page.</p>
+</div>
+
+</body>
+</html>

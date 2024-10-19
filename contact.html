@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Student Performance Evaluation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 2.5rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            animation: fadeUp 1.2s ease-in-out;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.4s ease, transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Student Performance Evaluation Form</h1>
+
+    <div class="container">
+        <form id="evaluationForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="roll">University Roll Number</label>
+                <input type="text" id="roll" name="roll" placeholder="Enter your roll number" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course & Year</label>
+                <input type="text" id="course" name="course" placeholder="Enter your course and year" required>
+            </div>
+            <div class="form-group">
+                <label for="company">Company/Organization</label>
+                <input type="text" id="company" name="company" placeholder="Enter the company name" required>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration of Internship/Placement</label>
+                <input type="text" id="duration" name="duration" placeholder="e.g., 3 months, 6 months" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Your Role/Position</label>
+                <input type="text" id="role" name="role" placeholder="Enter your role or position" required>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Rate your overall experience</label>
+                <select id="experience" name="experience" required>
+                    <option value="">Select</option>
+                    <option value="Excellent">Excellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Average">Average</option>
+                    <option value="Poor">Poor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="curriculum">How well did your academic curriculum prepare you?</label>
+                <select id="curriculum" name="curriculum" required>
+                    <option value="">Select</option>
+                    <option value="Very Well">Very Well</option>
+                    <option value="Well">Well</option>
+                    <option value="Neutral">Neutral</option>
+                    <option value="Not Well">Not Well</option>
+                    <option value="Poorly">Poorly</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="skills">What skills were most valuable?</label>
+                <textarea id="skills" name="skills" placeholder="Describe the skills that helped you" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="challenges">Challenges you faced (if any)</label>
+                <textarea id="challenges" name="challenges" placeholder="Describe any challenges" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById('evaluationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            alert("Form Submitted Successfully!");
+            // Here you can send the form data to a server using AJAX or similar method
+        });
+    </script>
+
+</body>
+</html>

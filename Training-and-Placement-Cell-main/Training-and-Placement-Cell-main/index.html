@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <title>PLACEMENT CELL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+    </style>
+    <script>
+      // Toggle dropdown visibility
+      function toggleDropdown(id) {
+        const dropdown = document.getElementById(id);
+        dropdown.classList.toggle('hidden');
+      }
+
+      // Close the dropdown when clicking outside of it
+      window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-btn')) {
+          var dropdowns = document.getElementsByClassName('dropdown-content');
+          for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (!openDropdown.classList.contains('hidden')) {
+              openDropdown.classList.add('hidden');
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+
+  <body class="bg-gray-100">
+    <header class="bg-white shadow-md">
+      <div class="container mx-auto py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center">
+          <img alt="Institute Logo" class="mr-4" height="50" src="https://imgs.search.brave.com/HZQoDf0J790MvISceV6kT26t-ep0AMLfiGRa9F5NFQc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4udW5pdmVyc2l0eWthcnQuY29tL0NvbnRlbnQvdX
+Bsb2FkL2FkbWluL2V0eHpyb2UzLmdoc3xuanBn" width="50" />
+          <div>
+            <h1 class="text-3xl font-bold text-purple-700">PLACEMENT CELL</h1>
+            <p class="text-sm text-gray-600">SHREE LR TIWARI COLLEGE OF ENGINEERING</p>
+          </div>
+        </div>
+        <div class="text-sm text-gray-600">
+          <p>
+            <i class="fas fa-envelope"></i> TNP-MAIL
+            <i class="fas fa-phone"></i> PHONE NO
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <nav class="bg-purple-700">
+      <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+        <div class="flex space-x-4">
+          <!-- For Recruiters Dropdown -->
+          <div class="relative">
+            <button class="text-white flex items-center space-x-1 dropdown-btn" onclick="toggleDropdown('recruitersDropdown')">
+              <i class="fas fa-home"></i>
+              <span>For Recruiters</span>
+              <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="recruitersDropdown" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden dropdown-content">
+              <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Option 1</a>
+              <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Option 2</a>
+            </div>
+          </div>
+
+          <!-- Why Recruit Dropdown -->
+          <div class="relative">
+            <button class="text-white flex items-center space-x-1 dropdown-btn" onclick="toggleDropdown('whyRecruitDropdown')">
+              <i class="fas fa-question-circle"></i>
+              <span>Why Recruit?</span>
+              <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="whyRecruitDropdown" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden dropdown-content">
+              <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Option 1</a>
+              <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">Option 2</a>
+            </div>
+          </div>
+
+          <!-- Student Team Link -->
+          <a class="text-white flex items-center space-x-1" href="studentteam.html">
+            <i class="fas fa-users"></i>
+            <span>Student Team</span>
+          </a>
+
+          <!-- Contact Us Link -->
+          <a class="text-white flex items-center space-x-1" href="#">
+            <i class="fas fa-envelope"></i>
+            <span>Contact Us</span>
+          </a>
+        </div>
+
+        <!-- For Students Dropdown -->
+        <div class="relative">
+          <button class="text-white flex items-center space-x-1 dropdown-btn" onclick="toggleDropdown('studentsDropdown')">
+            <i class="fas fa-user-graduate"></i>
+            <span>For Students</span>
+            <i class="fas fa-caret-down"></i>
+          </button>
+          <div id="studentsDropdown" class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden dropdown-content">
+            <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="community.html">Community</a>
+            <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="hackathon.html">Hackathon</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-4">
+      <div class="relative">
+        <img alt="SLRTCE" class="w-full rounded-md" height="400" src="" width="1200" />
+        <button class="absolute top-4 right-4 bg-pink-200 text-gray-800 px-4 py-2 rounded-md shadow-md">
+          Download Job Announcement Form (JAF)
+          <i class="fas fa-download"></i>
+        </button>
+      </div>
+
+      <section class="mt-6 bg-white p-6 rounded-md shadow-md">
+        <p class="text-gray-700"></p>
+      </section>
+    </main>
+  </body>
+</html>
